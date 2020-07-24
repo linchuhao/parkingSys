@@ -17,14 +17,13 @@ class ParkingBoyFacts {
     @Test
     void should_be_return_ticket_when_customer_given_car_to_parking_boy() {
         //given
-        Car car = new Car();
+        Car car = new Car("001");
         ParkingBoy parkingBoy = new ParkingBoy();
         ParkingLot parkingLot = new ParkingLot();
         //when
-        parkingBoy.park();
+        String actual = parkingBoy.park(car, parkingLot);
         //then
-        String actual = parkingLot.getTicket();
-        assertEquals("ticket",actual);
+        assertEquals("ticket001",actual);
     }
 
     @Test
