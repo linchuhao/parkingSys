@@ -13,6 +13,11 @@ public class ParkingBoy {
     }
 
     public boolean fetchCar(String ticket, ParkingLot parkingLot) {
-        return parkingLot.getTicketList().contains(ticket);
+        if (parkingLot.getTicketList().contains(ticket)){
+            //remove
+            parkingLot.getTicketList().remove(ticket);
+            return true;
+        }
+        return false;
     }
 }
