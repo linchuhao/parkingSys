@@ -9,8 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyFacts {
     @Test
@@ -58,30 +57,33 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_be_return_true_when_boy_given_right_ticket() {
+    void should_be_return_false_when_parking_boy_fetch_car_given_wrong_ticket() {
         //given
-
+        Car existCar = new Car("000");
+        Ticket ticket = new Ticket();
+        ParkingBoy parkingBoy = new ParkingBoy();
+        List<String> ticketList = Collections.singletonList("ticket: " + "001");
+        ParkingLot parkingLot = new ParkingLot(1, ticketList);
+        boolean fetchCar;
         //when
-
+        fetchCar = parkingBoy.fetchCar(ticket.generate(existCar), parkingLot);
         //then
+        assertFalse(fetchCar);
     }
 
     @Test
-    void should_be_not_return_car_when_customer_given_wrong_ticket() {
+    void should_be_return_false_when_parking_boy_fetch_car_given_repeat_ticket() {
         //given
-
+        Car existCar = new Car("001");
+        Ticket ticket = new Ticket();
+        ParkingBoy parkingBoy = new ParkingBoy();
+        List<String> ticketList = Collections.singletonList("ticket: " + "001");
+        ParkingLot parkingLot = new ParkingLot(1, ticketList);
+        boolean fetchCar;
         //when
-
+        fetchCar = parkingBoy.fetchCar(ticket.generate(existCar), parkingLot);
         //then
-    }
-
-    @Test
-    void should_be_not_return_car_when_customer_given_repeat_ticket() {
-        //given
-
-        //when
-
-        //then
+        assertFalse(fetchCar);
     }
 
     @Test
