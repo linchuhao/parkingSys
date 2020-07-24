@@ -72,18 +72,20 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_be_return_false_when_parking_boy_fetch_car_given_repeat_ticket() {
+    void should_be_return_false_when_parking_boy_fetch_car_given_expired_ticket() {
         //given
         Car existCar = new Car("001");
         Ticket ticket = new Ticket();
         ParkingBoy parkingBoy = new ParkingBoy();
         List<String> ticketList = Collections.singletonList("ticket: " + "001");
         ParkingLot parkingLot = new ParkingLot(1, ticketList);
-        boolean fetchCar;
+        boolean firstFetchCar;
+        boolean secondFetchCar;
         //when
-        fetchCar = parkingBoy.fetchCar(ticket.generate(existCar), parkingLot);
+        firstFetchCar = parkingBoy.fetchCar(ticket.generate(existCar), parkingLot);
+        secondFetchCar = parkingBoy.fetchCar(ticket.generate(existCar), parkingLot);
         //then
-        assertFalse(fetchCar);
+        assertFalse(secondFetchCar);
     }
 
     @Test
