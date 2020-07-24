@@ -1,6 +1,10 @@
 package com.oocl.cultivation;
 
-public class Ticket {
+public class Ticket implements TicketGenerator{
+
+    public Ticket() {
+
+    }
 
     public String getToken() {
         return token;
@@ -14,5 +18,10 @@ public class Ticket {
 
     public Ticket(String token) {
         this.token = token;
+    }
+
+    @Override
+    public String generate(Car car) {
+        return "ticket: " + car.getCarId();
     }
 }

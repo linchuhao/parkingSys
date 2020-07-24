@@ -6,7 +6,11 @@ import com.oocl.cultivation.ParkingBoy;
 import com.oocl.cultivation.ParkingLot;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ParkingBoyFacts {
     @Test
@@ -23,21 +27,22 @@ class ParkingBoyFacts {
         //when
         String actual = parkingBoy.park(car, parkingLot);
         //then
-        assertEquals("ticket001",actual);
+        assertEquals("ticket: 001",actual);
     }
 
     @Test
-    void should_be_return_car_when_parking_lot_given_right_ticket_to_boy() {
+    void should_be_return_true_when_parking_lot_given_right_ticket_to_boy() {
         //given
         Car existCar = new Car("001");
-        Ticket ticket = new Ticket("ticket001");
+        Ticket ticket = new Ticket();
         ParkingBoy parkingBoy = new ParkingBoy();
-        ParkingLot parkingLot = new ParkingLot();
+        List<String> ticketList = Collections.singletonList("ticket: " + "001");
+        ParkingLot parkingLot = new ParkingLot(1, ticketList);
+        boolean fetchCar;
         //when
-        Car fetchCar;
-        fetchCar = parkingBoy.fetchCar(ticket, parkingLot);
+        fetchCar = parkingBoy.fetchCar(ticket.generate(existCar), parkingLot);
         //then
-        assertEquals(existCar.getCarId(),fetchCar.getCarId());
+        assertTrue(fetchCar);
     }
 
     @Test

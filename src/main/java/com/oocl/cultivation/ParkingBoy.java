@@ -6,12 +6,13 @@ public class ParkingBoy {
 
     public String park(Car car, ParkingLot parkingLot) {
         if (parkingLot.getPositionNum() < 10){
-            return "ticket" + car.getCarId();
+            TicketGenerator ticket = new Ticket();
+            return ticket.generate(car);
         }
         return "not position";
     }
 
-    public Car fetchCar(Ticket ticket, ParkingLot parkingLot) {
-        return null;
+    public boolean fetchCar(String ticket, ParkingLot parkingLot) {
+        return parkingLot.getTicketList().contains(ticket);
     }
 }
