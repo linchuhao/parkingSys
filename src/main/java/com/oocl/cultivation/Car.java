@@ -8,6 +8,9 @@ public class Car {
         this.carId = carId;
     }
 
+    public Car () {
+    }
+
     public String getCarId() {
         return carId;
     }
@@ -15,5 +18,14 @@ public class Car {
     public void setCarId(String carId) {
         this.carId = carId;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return carId.equals(car.carId);
+    }
+
 
 }
