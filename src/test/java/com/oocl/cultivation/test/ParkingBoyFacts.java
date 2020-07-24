@@ -31,7 +31,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_be_return_true_when_parking_lot_given_right_ticket_to_boy() {
+    void should_be_return_true_when_parking_boy_fetch_car_given_right_ticket() {
         //given
         Car existCar = new Car("001");
         Ticket ticket = new Ticket();
@@ -46,16 +46,19 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_be_return_ticket_when_boy_parking() {
+    void should_be_return_ticket_when_parking_boy_park_car_given_parking_car() {
         //given
-
+        Car parkingCar = new Car("parking001");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkingLot = new ParkingLot();
         //when
-
+        String actual = parkingBoy.park(parkingCar, parkingLot);
         //then
+        assertEquals("ticket: parking001",actual);
     }
 
     @Test
-    void should_be_return_car_when_boy_given_right_ticket() {
+    void should_be_return_true_when_boy_given_right_ticket() {
         //given
 
         //when
