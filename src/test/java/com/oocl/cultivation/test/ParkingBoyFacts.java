@@ -6,6 +6,7 @@ import com.oocl.cultivation.ParkingBoy;
 import com.oocl.cultivation.ParkingLot;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -35,7 +36,9 @@ class ParkingBoyFacts {
         Car existCar = new Car("001");
         Ticket ticket = new Ticket();
         ParkingBoy parkingBoy = new ParkingBoy();
-        List<String> ticketList = Collections.singletonList("ticket: " + "001");
+        List<String> ticketList = new ArrayList();
+        ticketList.add("ticket: 001");
+        ticketList.add("ticket: 002");
         ParkingLot parkingLot = new ParkingLot(1, ticketList);
         boolean fetchCar;
         //when
@@ -62,7 +65,9 @@ class ParkingBoyFacts {
         Car existCar = new Car("000");
         Ticket ticket = new Ticket();
         ParkingBoy parkingBoy = new ParkingBoy();
-        List<String> ticketList = Collections.singletonList("ticket: " + "001");
+        List<String> ticketList = new ArrayList();
+        ticketList.add("ticket: 001");
+        ticketList.add("ticket: 002");
         ParkingLot parkingLot = new ParkingLot(1, ticketList);
         boolean fetchCar;
         //when
@@ -77,7 +82,9 @@ class ParkingBoyFacts {
         Car existCar = new Car("001");
         Ticket ticket = new Ticket();
         ParkingBoy parkingBoy = new ParkingBoy();
-        List<String> ticketList = Collections.singletonList("ticket: " + "001");
+        List<String> ticketList = new ArrayList();
+        ticketList.add("ticket: 001");
+        ticketList.add("ticket: 002");
         ParkingLot parkingLot = new ParkingLot(1, ticketList);
         boolean firstFetchCar;
         boolean secondFetchCar;
