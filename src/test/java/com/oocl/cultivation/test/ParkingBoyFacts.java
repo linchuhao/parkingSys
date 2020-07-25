@@ -117,4 +117,16 @@ class ParkingBoyFacts {
         //then
         assertEquals("the car has parked.", actual);
     }
+
+    @Test
+    void should_be_return_the_car_is_null_when_parking_boy_to_park_car_given_a_null_car(){
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        //when
+        String actual = parkingBoy.park(car, parkingLot);
+        //then
+        assertEquals("the car is null.", actual);
+    }
 }
