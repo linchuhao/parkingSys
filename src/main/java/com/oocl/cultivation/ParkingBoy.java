@@ -4,6 +4,8 @@ package com.oocl.cultivation;
 
 public class ParkingBoy {
 
+    private Message message = new Message();
+
     public String park(Car car, ParkingLot parkingLot) {
         if (null == car.getCarId()){
             return "the car is null.";
@@ -20,11 +22,15 @@ public class ParkingBoy {
         return "no position.";
     }
 
-    public boolean fetchCar(String ticketToken, ParkingLot parkingLot) {
+    public Message fetchCar(String ticketToken, ParkingLot parkingLot) {
         if (parkingLot.getTicketWithCarRecord().containsKey(ticketToken)){
             parkingLot.returnCar(ticketToken);
-            return true;
+            message.setResult(true);
+            message.setMessage("Fetch the car successfully.");
+            return message;
         }
-        return false;
+        message.setResult(false);
+        message.setMessage("Unrecognized parking ticket.");
+        return message;
     }
 }

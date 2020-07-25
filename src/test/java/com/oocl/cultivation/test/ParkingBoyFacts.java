@@ -32,7 +32,7 @@ class ParkingBoyFacts {
         parkingLot.acceptCar(existCar);
         String rightTicket = ticket.generate(existCar);
         //when
-        boolean fetchCar = parkingBoy.fetchCar(rightTicket, parkingLot);
+        boolean fetchCar = parkingBoy.fetchCar(rightTicket, parkingLot).isResult();
         //then
         assertTrue(fetchCar);
     }
@@ -57,7 +57,7 @@ class ParkingBoyFacts {
         boolean fetchCar;
         String wrongTicket = "wrongTicket";
         //when
-        fetchCar = parkingBoy.fetchCar(wrongTicket, parkingLot);
+        fetchCar = parkingBoy.fetchCar(wrongTicket, parkingLot).isResult();
         //then
         assertFalse(fetchCar);
     }
@@ -73,8 +73,8 @@ class ParkingBoyFacts {
         boolean firstFetchCar;
         boolean secondFetchCar;
         //when
-        firstFetchCar = parkingBoy.fetchCar(ticket.generate(car), parkingLot);
-        secondFetchCar = parkingBoy.fetchCar(ticket.generate(car), parkingLot);
+        firstFetchCar = parkingBoy.fetchCar(ticket.generate(car), parkingLot).isResult();
+        secondFetchCar = parkingBoy.fetchCar(ticket.generate(car), parkingLot).isResult();
         //then
         assertFalse(secondFetchCar);
     }
@@ -125,5 +125,17 @@ class ParkingBoyFacts {
         String actual = parkingBoy.park(car, parkingLot);
         //then
         assertEquals("the car is null.", actual);
+    }
+
+    @Test
+    void should_be_return_error_message_unrecoginized_parking_ticket_when_parking_boy_to_fetch_car_given_wrong_ticket(){
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkingLot = new ParkingLot();
+        String wrongTicket = "wrongTicket";
+        //when
+        String actual = parkingBoy.fetchCar(wrongTicket, parkingLot).getMessage();
+        //then
+        assertEquals("Unrecognized parking ticket.", actual);
     }
 }
