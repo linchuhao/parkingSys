@@ -17,7 +17,7 @@ class ParkingBoyFacts {
         ParkingBoy parkingBoy = new ParkingBoy();
         ParkingLot parkingLot = new ParkingLot();
         //when
-        String actual = parkingBoy.park(car, parkingLot);
+        String actual = parkingBoy.park(car, parkingLot).getTicketToken();
         //then
         assertEquals("ticket: 001",actual);
     }
@@ -44,7 +44,7 @@ class ParkingBoyFacts {
         ParkingBoy parkingBoy = new ParkingBoy();
         ParkingLot parkingLot = new ParkingLot();
         //when
-        String actual = parkingBoy.park(parkingCar, parkingLot);
+        String actual = parkingBoy.park(parkingCar, parkingLot).getTicketToken();
         //then
         assertEquals("ticket: parking001",actual);
     }
@@ -80,7 +80,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_be_return_no_position_when_parking_boy_to_park_car_given_parking_lot_is_no_position() {
+    void should_be_return_not_enough_position_when_parking_boy_to_park_car_given_parking_lot_is_no_position() {
         //given
         Car car = new Car("001");
         ParkingBoy parkingBoy = new ParkingBoy();
@@ -96,9 +96,9 @@ class ParkingBoyFacts {
         parkingLot.getTicketWithCarRecord().put("t9","car9");
         parkingLot.getTicketWithCarRecord().put("t10","car10");
         //when
-        String actual = parkingBoy.park(car, parkingLot);
+        String actual = parkingBoy.park(car, parkingLot).getMessage();
         //then
-        assertEquals("no position.",actual);
+        assertEquals("Not enough position.",actual);
     }
 
     @Test
@@ -110,7 +110,7 @@ class ParkingBoyFacts {
         parkingLot.acceptCar(car);
         parkingBoy.park(car, parkingLot);
         //when
-        String actual = parkingBoy.park(car, parkingLot);
+        String actual = parkingBoy.park(car, parkingLot).getMessage();
         //then
         assertEquals("the car has parked.", actual);
     }
@@ -122,7 +122,7 @@ class ParkingBoyFacts {
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
         //when
-        String actual = parkingBoy.park(car, parkingLot);
+        String actual = parkingBoy.park(car, parkingLot).getMessage();
         //then
         assertEquals("the car is null.", actual);
     }

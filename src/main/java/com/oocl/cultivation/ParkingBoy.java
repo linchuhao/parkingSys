@@ -6,20 +6,28 @@ public class ParkingBoy {
 
     private Message message = new Message();
 
-    public String park(Car car, ParkingLot parkingLot) {
+    public Message park(Car car, ParkingLot parkingLot) {
         if (null == car.getCarId()){
-            return "the car is null.";
+            message.setResult(false);
+            message.setMessage("the car is null.");
+            return message;
         }
         if (parkingLot.theCarHasParked(car)){
-            return "the car has parked.";
+            message.setResult(false);
+            message.setMessage("the car has parked.");
+            return message;
         }
-        parkingLot.getTicketWithCarRecord().size();
         if (parkingLot.getTicketWithCarRecord().size() < 10){
             parkingLot.acceptCar(car);
             TicketGenerator ticket = new Ticket();
-            return ticket.generate(car);
+            message.setResult(true);
+            message.setTicketToken(ticket.generate(car));
+            message.setMessage("the car has parked.");
+            return message;
         }
-        return "no position.";
+        message.setResult(false);
+        message.setMessage( "Not enough position.");
+        return message;
     }
 
     public Message fetchCar(String ticketToken, ParkingLot parkingLot) {

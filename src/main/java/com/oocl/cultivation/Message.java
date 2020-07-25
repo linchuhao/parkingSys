@@ -9,6 +9,16 @@ public class Message {
 
     private String message;
 
+    private String ticketToken;
+
+    public String getTicketToken() {
+        return ticketToken;
+    }
+
+    public void setTicketToken(String ticketToken) {
+        this.ticketToken = ticketToken;
+    }
+
     public boolean isResult() {
         return result;
     }
