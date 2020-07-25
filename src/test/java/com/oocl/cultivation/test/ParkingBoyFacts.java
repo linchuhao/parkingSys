@@ -6,8 +6,6 @@ import com.oocl.cultivation.ParkingBoy;
 import com.oocl.cultivation.ParkingLot;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -54,7 +52,6 @@ class ParkingBoyFacts {
     @Test
     void should_be_return_false_when_parking_boy_fetch_car_given_wrong_ticket() {
         //given
-        Car existCar = new Car("000");
         ParkingBoy parkingBoy = new ParkingBoy();
         ParkingLot parkingLot = new ParkingLot();
         boolean fetchCar;
@@ -101,7 +98,7 @@ class ParkingBoyFacts {
         //when
         String actual = parkingBoy.park(car, parkingLot);
         //then
-        assertEquals("no position",actual);
+        assertEquals("no position.",actual);
     }
 
     @Test
