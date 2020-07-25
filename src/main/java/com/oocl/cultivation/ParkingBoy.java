@@ -23,6 +23,11 @@ public class ParkingBoy {
     }
 
     public Message fetchCar(String ticketToken, ParkingLot parkingLot) {
+        if (null == ticketToken){
+            message.setResult(false);
+            message.setMessage("Please provide your parking ticket.");
+            return message;
+        }
         if (parkingLot.getTicketWithCarRecord().containsKey(ticketToken)){
             parkingLot.returnCar(ticketToken);
             message.setResult(true);
