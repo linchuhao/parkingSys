@@ -26,6 +26,10 @@ public class ParkingLot {
         this.ticketList = ticketList;
     }
 
+    public ParkingLot(int positionNum) {
+        this.positionNum = positionNum;
+    }
+
     public String generateTicket(Car car) {
         this.ticketList.add(car.getCarId());
         return car.getCarId();

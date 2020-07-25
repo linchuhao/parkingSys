@@ -7,7 +7,6 @@ import com.oocl.cultivation.ParkingLot;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,7 +35,7 @@ class ParkingBoyFacts {
         Car existCar = new Car("001");
         Ticket ticket = new Ticket();
         ParkingBoy parkingBoy = new ParkingBoy();
-        List<String> ticketList = new ArrayList();
+        List<String> ticketList = new ArrayList<>();
         ticketList.add("ticket: 001");
         ticketList.add("ticket: 002");
         ParkingLot parkingLot = new ParkingLot(1, ticketList);
@@ -65,7 +64,7 @@ class ParkingBoyFacts {
         Car existCar = new Car("000");
         Ticket ticket = new Ticket();
         ParkingBoy parkingBoy = new ParkingBoy();
-        List<String> ticketList = new ArrayList();
+        List<String> ticketList = new ArrayList<>();
         ticketList.add("ticket: 001");
         ticketList.add("ticket: 002");
         ParkingLot parkingLot = new ParkingLot(1, ticketList);
@@ -82,7 +81,7 @@ class ParkingBoyFacts {
         Car existCar = new Car("001");
         Ticket ticket = new Ticket();
         ParkingBoy parkingBoy = new ParkingBoy();
-        List<String> ticketList = new ArrayList();
+        List<String> ticketList = new ArrayList<>();
         ticketList.add("ticket: 001");
         ticketList.add("ticket: 002");
         ParkingLot parkingLot = new ParkingLot(1, ticketList);
@@ -96,11 +95,14 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_be_not_return_ticket_when_boy_parking_lot_is_no_position() {
+    void should_be_return_no_position_when_parking_boy_to_park_car_given_parking_lot_is_no_position() {
         //given
-
+        Car car = new Car("001");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkingLot = new ParkingLot(0);
         //when
-
+        String actual = parkingBoy.park(car, parkingLot);
         //then
+        assertEquals("no position",actual);
     }
 }

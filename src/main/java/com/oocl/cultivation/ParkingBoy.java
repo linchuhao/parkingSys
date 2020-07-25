@@ -9,7 +9,7 @@ public class ParkingBoy {
             TicketGenerator ticket = new Ticket();
             return ticket.generate(car);
         }
-        return "not position";
+        return "no position";
     }
 
     public boolean fetchCar(String ticket, ParkingLot parkingLot) {
