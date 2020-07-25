@@ -149,4 +149,26 @@ class ParkingBoyFacts {
         //then
         assertEquals("Please provide your parking ticket.", actual);
     }
+
+    @Test
+    void should_be_return_true_when_parking_boy_to_park_car_in_the_next_parking_lot_given_the_first_parking_lot_is_no_position(){
+        //given
+        Car car = new Car("001");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLot.getTicketWithCarRecord().put("t1","car1");
+        parkingLot.getTicketWithCarRecord().put("t2","car2");
+        parkingLot.getTicketWithCarRecord().put("t3","car3");
+        parkingLot.getTicketWithCarRecord().put("t4","car4");
+        parkingLot.getTicketWithCarRecord().put("t5","car5");
+        parkingLot.getTicketWithCarRecord().put("t6","car6");
+        parkingLot.getTicketWithCarRecord().put("t7","car7");
+        parkingLot.getTicketWithCarRecord().put("t8","car8");
+        parkingLot.getTicketWithCarRecord().put("t9","car9");
+        parkingLot.getTicketWithCarRecord().put("t10","car10");
+        //when
+        boolean actual = parkingBoy.park(car, parkingLot).isResult();
+        //then
+        assertTrue(actual);
+    }
 }
