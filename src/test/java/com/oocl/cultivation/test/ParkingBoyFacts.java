@@ -105,4 +105,17 @@ class ParkingBoyFacts {
         //then
         assertEquals("no position",actual);
     }
+
+    @Test
+    void should_be_return_the_car_was_parked_when_parking_boy_to_park_car_given_a_parked_car(){
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkingLot = new ParkingLot();
+        Car parkedCar = new Car("001");
+        parkingLot.generateTicket(parkedCar);
+        //when
+        String actual = parkingBoy.park(parkedCar, parkingLot);
+        //then
+        assertEquals("the car was parked.", actual);
+    }
 }
