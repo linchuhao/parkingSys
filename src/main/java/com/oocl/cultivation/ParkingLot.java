@@ -1,45 +1,34 @@
 package com.oocl.cultivation;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class ParkingLot {
 
-    private int positionNum;
+    private Ticket ticket = new Ticket();
 
-    private List<String> ticketList;
+    private HashMap<String, String> ticketWithCarRecord = new HashMap<String, String>();
 
-    public ParkingLot() {
+    public ParkingLot() { }
 
+    public boolean theCarHasParked(Car car) {
+        if (ticketWithCarRecord.isEmpty()){
+            return false;
+        }
+        return ticketWithCarRecord.containsValue(car.getCarId());
     }
 
-    public List<String> getTicketList() {
-        return ticketList;
+    public void acceptCar(Car car) {
+        String ticketToken = ticket.generate(car);
+        ticketWithCarRecord.put(ticketToken, car.getCarId());
     }
 
-    public void setTicketList(List<String> ticketList) {
-        this.ticketList = ticketList;
+    public void returnCar(String ticketToken) {
+        ticketWithCarRecord.remove(ticketToken);
     }
 
-    public ParkingLot(int positionNum, List<String> ticketList) {
-        this.positionNum = positionNum;
-
-        this.ticketList = ticketList;
-    }
-
-    public ParkingLot(int positionNum) {
-        this.positionNum = positionNum;
-    }
-
-    public String generateTicket(Car car) {
-        this.ticketList.add(car.getCarId());
-        return car.getCarId();
-    }
-
-    public int getPositionNum() {
-        return positionNum;
-    }
-
-    public void setPositionNum(int positionNum) {
-        this.positionNum = positionNum;
+    public HashMap<String, String> getTicketWithCarRecord() {
+        return ticketWithCarRecord;
     }
 }

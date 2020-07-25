@@ -5,17 +5,21 @@ package com.oocl.cultivation;
 public class ParkingBoy {
 
     public String park(Car car, ParkingLot parkingLot) {
-        if (parkingLot.getPositionNum() > 0){
+        if (parkingLot.theCarHasParked(car)){
+            return "the car has parked.";
+        }
+        parkingLot.getTicketWithCarRecord().size();
+        if (parkingLot.getTicketWithCarRecord().size() < 10){
+            parkingLot.acceptCar(car);
             TicketGenerator ticket = new Ticket();
             return ticket.generate(car);
         }
         return "no position";
     }
 
-    public boolean fetchCar(String ticket, ParkingLot parkingLot) {
-        if (parkingLot.getTicketList().contains(ticket)){
-            //remove
-            parkingLot.getTicketList().remove(ticket);
+    public boolean fetchCar(String ticketToken, ParkingLot parkingLot) {
+        if (parkingLot.getTicketWithCarRecord().containsKey(ticketToken)){
+            parkingLot.returnCar(ticketToken);
             return true;
         }
         return false;
