@@ -5,7 +5,7 @@ package com.oocl.cultivation;
 public class ParkingBoy {
 
     public String park(Car car, ParkingLot parkingLot) {
-        if (parkingLot.getPositionNum() < 10){
+        if (parkingLot.getPositionNum() > 0){
             TicketGenerator ticket = new Ticket();
             return ticket.generate(car);
         }
