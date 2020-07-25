@@ -5,6 +5,9 @@ package com.oocl.cultivation;
 public class ParkingBoy {
 
     public String park(Car car, ParkingLot parkingLot) {
+        if (null == car.getCarId()){
+            return "the car is null.";
+        }
         if (parkingLot.theCarHasParked(car)){
             return "the car has parked.";
         }
@@ -14,7 +17,7 @@ public class ParkingBoy {
             TicketGenerator ticket = new Ticket();
             return ticket.generate(car);
         }
-        return "no position";
+        return "no position.";
     }
 
     public boolean fetchCar(String ticketToken, ParkingLot parkingLot) {
