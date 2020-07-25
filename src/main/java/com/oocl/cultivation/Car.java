@@ -15,10 +15,6 @@ public class Car {
         return carId;
     }
 
-    public void setCarId(String carId) {
-        this.carId = carId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
