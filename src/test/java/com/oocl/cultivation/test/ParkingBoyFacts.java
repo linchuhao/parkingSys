@@ -225,7 +225,20 @@ class ParkingBoyFacts {
         //when
         manager.addMember(parkingBoy);
         //then
-        Boolean actual = manager.getManagementList().contains(parkingBoy);
+        boolean actual = manager.getManagementList().contains(parkingBoy);
+        assertTrue(actual);
+    }
+
+    @Test
+    void should_be_return_true_when_manager_specify_a_paring_boy_to_park_car_given_parking_boy_in_management_list(){
+        //given
+        Car  car = new Car("0001");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Manager manager = new Manager();
+        manager.addMember(parkingBoy);
+        //when
+        boolean actual = manager.specifyBoyToParkCar(parkingBoy, car).isResult();
+        //then
         assertTrue(actual);
     }
 }

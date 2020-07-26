@@ -4,6 +4,7 @@ package com.oocl.cultivation;
 
 public class ParkingBoy extends Boy{
 
+    @Override
     public Message park(Car car, ParkingLotManagement parkingLotManagement) {
         if (null == car.getCarId()){
             return Message.failedMessage("the car is null.");
@@ -19,12 +20,6 @@ public class ParkingBoy extends Boy{
     }
 
     public Message fetchCar(String ticketToken, ParkingLotManagement parkingLotManagement) {
-        if (null == ticketToken){
-            return Message.failedMessage("Please provide your parking ticket.");
-        }
-        if (parkingLotManagement.returnCar(ticketToken)){
-            return Message.successMessage("Fetch the car successfully.");
-        }
-        return Message.failedMessage("Unrecognized parking ticket.");
+        return super.fetchCar(ticketToken, parkingLotManagement);
     }
 }
