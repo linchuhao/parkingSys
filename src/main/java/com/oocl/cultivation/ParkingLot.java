@@ -1,10 +1,8 @@
 package com.oocl.cultivation;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 
-public class ParkingLot {
+public class ParkingLot{
 
     private Ticket ticket = new Ticket();
 
