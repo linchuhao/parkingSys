@@ -257,4 +257,15 @@ class ParkingBoyFacts {
         //then
         assertTrue(actual);
     }
+
+    @Test
+    void should_be_return_true_when_manager_park_car_given_parking_lot(){
+        //given
+        Car  car = new Car("0001");
+        Manager manager = new Manager();
+        //when
+        boolean actual = manager.parkInOwnParkingLot(car).isResult();
+        //then
+        assertTrue(actual);
+    }
 }

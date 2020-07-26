@@ -35,9 +35,13 @@ public class ParkingLot{
         return ticketWithCarRecord.containsValue(car.getCarId());
     }
 
-    public void acceptCar(Car car) {
-        String ticketToken = ticket.generate(car);
-        ticketWithCarRecord.put(ticketToken, car.getCarId());
+    public Message acceptCar(Car car) {
+        if (ticketWithCarRecord.size() < 10){
+            String ticketToken = ticket.generate(car);
+            ticketWithCarRecord.put(ticketToken, car.getCarId());
+            return Message.successMessage("The car is parked.");
+        }
+        return Message.failedMessage("Not enough position.");
     }
 
     public void returnCar(String ticketToken) {

@@ -14,6 +14,4 @@ public abstract class Boy {
         }
         return Message.failedMessage("Unrecognized parking ticket.");
     }
-
-//    public abstract void park(Car car);
 }
