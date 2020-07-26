@@ -241,4 +241,20 @@ class ParkingBoyFacts {
         //then
         assertTrue(actual);
     }
+
+    @Test
+    void should_be_return_true_when_manager_specify_a_paring_boy_to_fetch_car_given_parking_boy_in_management_list_and_right_token(){
+        //given
+        Car  car = new Car("0001");
+        Ticket ticket = new Ticket();
+        String ticketToken = ticket.generate(car);
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Manager manager = new Manager();
+        manager.getParkingLotManagement().acceptCarFromParkingBoy(car);
+        manager.addMember(parkingBoy);
+        //when
+        boolean actual = manager.specifyBoyToFetchCar(parkingBoy, ticketToken).isResult();
+        //then
+        assertTrue(actual);
+    }
 }

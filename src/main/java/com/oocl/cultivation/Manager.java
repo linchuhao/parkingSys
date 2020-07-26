@@ -17,6 +17,10 @@ public class Manager{
 
     }
 
+    public ParkingLotManagement getParkingLotManagement() {
+        return parkingLotManagement;
+    }
+
     public void setManagementList(List<Boy> managementList) {
         this.managementList = managementList;
     }
@@ -37,6 +41,13 @@ public class Manager{
     public Message specifyBoyToParkCar(Boy member, Car car) {
         if (findMemberInManagementList(member)){
             return member.park(car, parkingLotManagement);
+        }
+        return Message.failedMessage("Can not found member in managementList.");
+    }
+
+    public Message specifyBoyToFetchCar(Boy member, String ticketToken) {
+        if (findMemberInManagementList(member)){
+            return member.fetchCar(ticketToken, parkingLotManagement);
         }
         return Message.failedMessage("Can not found member in managementList.");
     }
