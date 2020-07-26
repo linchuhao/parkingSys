@@ -10,6 +10,10 @@ public class ParkingLot{
 
     public ParkingLot() { }
 
+    public int getCarQuantity() {
+        return ticketWithCarRecord.size();
+    }
+
     public boolean theCarHasParked(Car car) {
         if (ticketWithCarRecord.isEmpty()){
             return false;

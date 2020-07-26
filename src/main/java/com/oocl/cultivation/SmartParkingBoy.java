@@ -1,9 +1,6 @@
 package com.oocl.cultivation;
 
-
-
-public class ParkingBoy extends Boy{
-
+public class SmartParkingBoy extends Boy{
     public Message park(Car car, ParkingLotManagement parkingLotManagement) {
         if (null == car.getCarId()){
             return Message.failedMessage("the car is null.");
@@ -11,7 +8,7 @@ public class ParkingBoy extends Boy{
         if (parkingLotManagement.getParkingLotList().listIterator().next().theCarHasParked(car)){
             return Message.failedMessage("the car has parked.");
         }
-        if (parkingLotManagement.acceptCarFromParkingBoy(car)){
+        if (parkingLotManagement.acceptCarFromSmartParkingBoy(car)){
             TicketGenerator ticket = new Ticket();
             return Message.successMessageWithTicket("the car has parked.", ticket.generate(car));
         }
