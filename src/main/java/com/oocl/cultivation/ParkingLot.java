@@ -6,9 +6,23 @@ public class ParkingLot{
 
     private Ticket ticket = new Ticket();
 
+    private int capacity = 10;
+
     private HashMap<String, String> ticketWithCarRecord = new HashMap<String, String>();
 
     public ParkingLot() { }
+
+    public ParkingLot(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
 
     public int getCarQuantity() {
         return ticketWithCarRecord.size();

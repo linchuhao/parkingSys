@@ -55,6 +55,23 @@ public class ParkingLotManagement implements ParkingLotGenerator{
     }
 
     @Override
+    public boolean acceptCarFromSuperSmartParkingBoy(Car car) {
+        float availablePositionRate = 0;
+        int topAvailablePositionRateParkingLot = 0;
+        for (int i = 0; i < parkingLotList.size(); i++){
+            if (1 - (float)parkingLotList.get(i).getCarQuantity() / (float)parkingLotList.get(i).getCapacity() > availablePositionRate){
+                topAvailablePositionRateParkingLot = i;
+                availablePositionRate = 1.0f - (float)parkingLotList.get(i).getCarQuantity() / (float)parkingLotList.get(i).getCapacity();
+            }
+        }
+        if (parkingLotList.get(topAvailablePositionRateParkingLot).getCarQuantity() < parkingLotList.get(topAvailablePositionRateParkingLot).getCapacity()){
+            parkingLotList.get(topAvailablePositionRateParkingLot).acceptCar(car);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public boolean returnCar(String ticketToken) {
         AtomicBoolean returnCarSuccess = new AtomicBoolean(false);
         parkingLotList.iterator().forEachRemaining

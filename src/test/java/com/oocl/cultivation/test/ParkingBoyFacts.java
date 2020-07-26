@@ -197,4 +197,23 @@ class ParkingBoyFacts {
         //then
         assertTrue(park && actual);
     }
+
+    @Test
+    void should_be_return_true_when_super_smart_parking_boy_to_park_car_will_select_more_empty_parkinglot_given_parkinglot_list(){
+        //given
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        ParkingLotManagement parkingLotManagement = new ParkingLotManagement();
+        ParkingLot parkingLot = new ParkingLot(5);
+        Car car1InParkinglot1 = new Car("001");
+        Car car2InParkinglot2 = new Car("002");
+        parkingLotManagement.getParkingLotList().get(0).acceptCar(car1InParkinglot1);
+        parkingLot.acceptCar(car2InParkinglot2);
+        parkingLotManagement.getParkingLotList().add(parkingLot);
+        //when
+        Car car = new Car("003");
+        boolean park = superSmartParkingBoy.park(car, parkingLotManagement).isResult();
+        boolean actual = parkingLotManagement.getParkingLotList().get(0).theCarHasParked(car);
+        //then
+        assertTrue(park && actual);
+    }
 }

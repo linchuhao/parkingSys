@@ -5,5 +5,7 @@ public interface ParkingLotGenerator {
 
     boolean acceptCarFromSmartParkingBoy(Car car);
 
+    boolean acceptCarFromSuperSmartParkingBoy(Car car);
+
     boolean returnCar(String ticketToken);
 }
