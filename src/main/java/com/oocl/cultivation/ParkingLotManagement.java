@@ -3,10 +3,10 @@ package com.oocl.cultivation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.IntStream;
 
 public class ParkingLotManagement implements ParkingLotGenerator{
+
+    private int parkingLotQuantity;
 
     private ParkingLot parkingLot = new ParkingLot();
 
@@ -15,6 +15,14 @@ public class ParkingLotManagement implements ParkingLotGenerator{
     }};
 
     public ParkingLotManagement() {
+    }
+
+    public ParkingLotManagement(int parkingLotQuantity) {
+        this.parkingLotQuantity = parkingLotQuantity;
+    }
+
+    public int getParkingLotQuantity() {
+        return parkingLotQuantity;
     }
 
     @Override

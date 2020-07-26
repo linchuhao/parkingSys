@@ -76,27 +76,27 @@ class ParkingBoyFacts {
         assertFalse(secondFetchCar);
     }
 
-//    @Test
-//    void should_be_return_not_enough_position_when_parking_boy_to_park_car_given_parking_lot_is_no_position() {
-//        //given TODO add the size of the parkingLot
-//        Car car = new Car("001");
-//        ParkingBoy parkingBoy = new ParkingBoy();
-//        ParkingLotManagement parkingLotManagement = new ParkingLotManagement();
-//        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t1","car1");
-//        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t2","car2");
-//        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t3","car3");
-//        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t4","car4");
-//        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t5","car5");
-//        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t6","car6");
-//        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t7","car7");
-//        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t8","car8");
-//        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t9","car9");
-//        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t10","car10");
-//        //when
-//        String actual = parkingBoy.park(car, parkingLotManagement).getMessage();
-//        //then
-//        assertEquals("Not enough position.",actual);
-//    }
+    @Test
+    void should_be_return_not_enough_position_when_parking_boy_to_park_car_given_parking_lot_is_no_position() {
+        //given TODO add the size of the parkingLot
+        Car car = new Car("001");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLotManagement parkingLotManagement = new ParkingLotManagement(1);
+        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t1","car1");
+        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t2","car2");
+        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t3","car3");
+        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t4","car4");
+        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t5","car5");
+        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t6","car6");
+        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t7","car7");
+        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t8","car8");
+        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t9","car9");
+        parkingLotManagement.getParkingLotList().get(0).getTicketWithCarRecord().put("t10","car10");
+        //when
+        String actual = parkingBoy.park(car, parkingLotManagement).getMessage();
+        //then
+        assertEquals("Not enough position.",actual);
+    }
 
     @Test
     void should_be_return_the_car_has_parked_when_parking_boy_to_park_car_given_a_parked_car(){
@@ -215,5 +215,17 @@ class ParkingBoyFacts {
         boolean actual = parkingLotManagement.getParkingLotList().get(0).theCarHasParked(car);
         //then
         assertTrue(park && actual);
+    }
+
+    @Test
+    void should_be_return_true_when_manager_add_paring_boy_to_management_list(){
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Manager manager = new Manager();
+        //when
+        manager.addMember(parkingBoy);
+        //then
+        Boolean actual = manager.getManagementList().contains(parkingBoy);
+        assertTrue(actual);
     }
 }
